@@ -2,7 +2,7 @@
 
 <head>
 	<title>Práctica Javascript</title>
-	<script src="index.js"></script>
+	<script src="index.js" defer></script>
 	<style>
 		* {
 			margin: 0;
@@ -37,7 +37,14 @@
 		}
 
 		.color-item--odd {
+      width: 100%;
+			list-style: none;
+			padding: 10px 20px;
 			background-color: lightblue;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+      font-size: 16px;
 		}
 
 		.color-list-title {

@@ -26,8 +26,6 @@
 
 // Buena suerte!
 
-window.addEventListener("load", onLoad);
-
 const colorList = [
   {
     colorName: 'white',
@@ -63,23 +61,87 @@ const colorList = [
   }
 ];
 
+(function() {
+  addElements();
+})();
+
+function addElements(){
+  let parentElement = document.querySelector('.color-list');
+  let count = 1;
   
+  document.body.addEventListener("click", alertbody);
 
-function listElement(){
+  for(color of colorList){
+    let li = document.createElement("li");
+    
+    if(count % 2 == 0){
 
-let parentElement = document.querySelector('.color-list');
-
- for(element of selector){
-console.log(element);
-
- }
+      li.setAttribute("class", "color-item--odd");
+    }else{
+        li.setAttribute("class", "color-item");
+    }
   
+    let div1 = document.createElement("div");
+    div1.innerHTML = "Color: " + color.colorName;
+    div1.setAttribute("class", "color-name");
+    div1.addEventListener("click", alertColor);
+    
+    let div2 = document.createElement("div");
+    div2.innerHTML = "Muestra";
+    div2.setAttribute("class", "color-show");
+    div2.style.backgroundColor = color.hex;
+
+    let button1 = document.createElement("button");
+    button1.textContent = "Next item color";
+    button1.setAttribute("class", "color-set");
+    button1.addEventListener("click", changeNextColor);
+
+    let button2 = document.createElement("button");
+    button2.textContent = "Page color";
+    button2.setAttribute("class", "color-set");
+    button2.addEventListener("click", changeBackgroundColor);
+
+    li.appendChild(div1);
+    li.appendChild(div2);
+    li.appendChild(button1);
+    li.appendChild(button2);
+
+    parentElement.appendChild(li);
+
+    console.log(color);
+
+    count++;
 
 
-}
-
-function onLoad() {
-  listElement();
+  }
   console.log("element");
- 
-}
+
+
+};
+
+ function changeBackgroundColor(){
+   let parentLi= this.parentNode;
+   let secondChild = parentLi.firstChild.nextElementSibling;
+   let color = secondChild.style.backgroundColor;
+   document.body.style.backgroundColor = color;
+
+    console.log(color);
+  }
+
+   function changeNextColor(){
+     let liPadre = this.parentNode;
+     let secondChild = liPadre.firstChild.nextElementSibling;
+     let color = secondChild.style.backgroundColor;
+     let secondLi = liPadre.nextElementSibling;
+     secondLi.style.backgroundColor = color;
+
+    console.log(this);
+  }
+
+  function alertColor(){
+    alert(this.innerHTML.slice(6,20));
+  }
+
+  function alertbody(){
+    alert("Body");
+  }
