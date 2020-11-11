@@ -60,3 +60,19 @@ const colorList = [
     hex: '#c0c0c0'
   }
 ];
+
+
+window.addEventListener("load", onLoad);
+
+function listElement(){
+let list = document.getElementById("color-list");
+var li1 = document.createElement("li");
+
+
+console.log(list);
+}
+
+function onLoad() {
+  
+ 
+}
