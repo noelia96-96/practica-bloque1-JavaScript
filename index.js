@@ -26,6 +26,8 @@
 
 // Buena suerte!
 
+window.addEventListener("load", onLoad);
+
 const colorList = [
   {
     colorName: 'white',
@@ -61,18 +63,23 @@ const colorList = [
   }
 ];
 
-
-window.addEventListener("load", onLoad);
+  
 
 function listElement(){
-let list = document.getElementById("color-list");
-var li1 = document.createElement("li");
+
+let parentElement = document.querySelector('.color-list');
+
+ for(element of selector){
+console.log(element);
+
+ }
+  
 
 
-console.log(list);
 }
 
 function onLoad() {
-  
+  listElement();
+  console.log("element");
  
 }
